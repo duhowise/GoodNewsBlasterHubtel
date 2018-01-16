@@ -1,11 +1,18 @@
-﻿namespace GoodNewsBlaster.Sms
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using WindowsFormsControlLibrary1;
+using Bunifu.Framework.UI;
+
+namespace GoodNewsBlaster.Sms
 {
     partial class SmsControl
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -28,128 +35,128 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SmsControl));
-            this.MessageContent = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
-            this.CheckList = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.SingleSendNumber = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.SingleSend = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.SendMessage = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(SmsControl));
+            this.MessageContent = new BunifuCustomTextbox();
+            this.CheckList = new BunifuCheckbox();
+            this.bunifuCustomLabel1 = new BunifuCustomLabel();
+            this.SingleSendNumber = new BunifuMetroTextbox();
+            this.bunifuCustomLabel2 = new BunifuCustomLabel();
+            this.SingleSend = new BunifuCheckbox();
+            this.SendMessage = new BunifuThinButton2();
+            this.bunifuCustomLabel3 = new BunifuCustomLabel();
             this.SuspendLayout();
             // 
             // MessageContent
             // 
-            this.MessageContent.BorderColor = System.Drawing.Color.SeaGreen;
-            this.MessageContent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageContent.Location = new System.Drawing.Point(15, 22);
+            this.MessageContent.BorderColor = Color.SeaGreen;
+            this.MessageContent.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.MessageContent.Location = new Point(15, 22);
             this.MessageContent.Multiline = true;
             this.MessageContent.Name = "MessageContent";
-            this.MessageContent.Size = new System.Drawing.Size(669, 241);
+            this.MessageContent.Size = new Size(669, 241);
             this.MessageContent.TabIndex = 0;
             // 
             // CheckList
             // 
-            this.CheckList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
-            this.CheckList.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckList.BackColor = Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            this.CheckList.ChechedOffColor = Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.CheckList.Checked = true;
-            this.CheckList.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
-            this.CheckList.ForeColor = System.Drawing.Color.White;
-            this.CheckList.Location = new System.Drawing.Point(16, 280);
+            this.CheckList.CheckedOnColor = Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            this.CheckList.ForeColor = Color.White;
+            this.CheckList.Location = new Point(16, 280);
             this.CheckList.Name = "CheckList";
-            this.CheckList.Size = new System.Drawing.Size(20, 20);
+            this.CheckList.Size = new Size(20, 20);
             this.CheckList.TabIndex = 1;
             // 
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(42, 280);
+            this.bunifuCustomLabel1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.Location = new Point(42, 280);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(56, 20);
+            this.bunifuCustomLabel1.Size = new Size(56, 20);
             this.bunifuCustomLabel1.TabIndex = 2;
             this.bunifuCustomLabel1.Text = "Use list";
             // 
             // SingleSendNumber
             // 
-            this.SingleSendNumber.BorderColorFocused = System.Drawing.Color.Blue;
-            this.SingleSendNumber.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SingleSendNumber.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.SingleSendNumber.BorderColorFocused = Color.Blue;
+            this.SingleSendNumber.BorderColorIdle = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SingleSendNumber.BorderColorMouseHover = Color.Blue;
             this.SingleSendNumber.BorderThickness = 3;
-            this.SingleSendNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SingleSendNumber.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.SingleSendNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SingleSendNumber.Cursor = Cursors.IBeam;
+            this.SingleSendNumber.Font = new Font("Century Gothic", 9.75F);
+            this.SingleSendNumber.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SingleSendNumber.isPassword = false;
-            this.SingleSendNumber.Location = new System.Drawing.Point(312, 270);
-            this.SingleSendNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.SingleSendNumber.Location = new Point(312, 270);
+            this.SingleSendNumber.Margin = new Padding(4);
             this.SingleSendNumber.Name = "SingleSendNumber";
-            this.SingleSendNumber.Size = new System.Drawing.Size(372, 30);
+            this.SingleSendNumber.Size = new Size(372, 30);
             this.SingleSendNumber.TabIndex = 3;
-            this.SingleSendNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.SingleSendNumber.TextAlign = HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(218, 276);
+            this.bunifuCustomLabel2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel2.Location = new Point(218, 276);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(87, 20);
+            this.bunifuCustomLabel2.Size = new Size(87, 20);
             this.bunifuCustomLabel2.TabIndex = 5;
             this.bunifuCustomLabel2.Text = "Single Send";
             // 
             // SingleSend
             // 
-            this.SingleSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
-            this.SingleSend.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.SingleSend.BackColor = Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            this.SingleSend.ChechedOffColor = Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.SingleSend.Checked = true;
-            this.SingleSend.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
-            this.SingleSend.ForeColor = System.Drawing.Color.White;
-            this.SingleSend.Location = new System.Drawing.Point(192, 276);
+            this.SingleSend.CheckedOnColor = Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            this.SingleSend.ForeColor = Color.White;
+            this.SingleSend.Location = new Point(192, 276);
             this.SingleSend.Name = "SingleSend";
-            this.SingleSend.Size = new System.Drawing.Size(20, 20);
+            this.SingleSend.Size = new Size(20, 20);
             this.SingleSend.TabIndex = 4;
             // 
             // SendMessage
             // 
             this.SendMessage.ActiveBorderThickness = 1;
             this.SendMessage.ActiveCornerRadius = 20;
-            this.SendMessage.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
-            this.SendMessage.ActiveForecolor = System.Drawing.Color.White;
-            this.SendMessage.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SendMessage.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.SendMessage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SendMessage.BackgroundImage")));
+            this.SendMessage.ActiveFillColor = Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            this.SendMessage.ActiveForecolor = Color.White;
+            this.SendMessage.ActiveLineColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SendMessage.BackColor = Color.WhiteSmoke;
+            this.SendMessage.BackgroundImage = ((Image)(resources.GetObject("SendMessage.BackgroundImage")));
             this.SendMessage.ButtonText = "Send";
-            this.SendMessage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SendMessage.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SendMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SendMessage.Cursor = Cursors.Hand;
+            this.SendMessage.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.SendMessage.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SendMessage.IdleBorderThickness = 1;
             this.SendMessage.IdleCornerRadius = 20;
-            this.SendMessage.IdleFillColor = System.Drawing.Color.White;
-            this.SendMessage.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SendMessage.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SendMessage.Location = new System.Drawing.Point(579, 299);
-            this.SendMessage.Margin = new System.Windows.Forms.Padding(5);
+            this.SendMessage.IdleFillColor = Color.White;
+            this.SendMessage.IdleForecolor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SendMessage.IdleLineColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SendMessage.Location = new Point(579, 299);
+            this.SendMessage.Margin = new Padding(5);
             this.SendMessage.Name = "SendMessage";
-            this.SendMessage.Size = new System.Drawing.Size(105, 41);
+            this.SendMessage.Size = new Size(105, 41);
             this.SendMessage.TabIndex = 8;
-            this.SendMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SendMessage.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(11, -1);
+            this.bunifuCustomLabel3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel3.Location = new Point(11, -1);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(141, 20);
+            this.bunifuCustomLabel3.Size = new Size(141, 20);
             this.bunifuCustomLabel3.TabIndex = 9;
             this.bunifuCustomLabel3.Text = "Type Message Here:";
             // 
             // SmsControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AutoScaleDimensions = new SizeF(6F, 13F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.BackColor = Color.WhiteSmoke;
             this.Controls.Add(this.bunifuCustomLabel3);
             this.Controls.Add(this.SendMessage);
             this.Controls.Add(this.bunifuCustomLabel2);
@@ -159,7 +166,7 @@
             this.Controls.Add(this.CheckList);
             this.Controls.Add(this.MessageContent);
             this.Name = "SmsControl";
-            this.Size = new System.Drawing.Size(723, 342);
+            this.Size = new Size(723, 342);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,13 +174,13 @@
 
         #endregion
 
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox MessageContent;
-        private Bunifu.Framework.UI.BunifuCheckbox CheckList;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private Bunifu.Framework.UI.BunifuMetroTextbox SingleSendNumber;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
-        private Bunifu.Framework.UI.BunifuCheckbox SingleSend;
-        private Bunifu.Framework.UI.BunifuThinButton2 SendMessage;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
+        private BunifuCustomTextbox MessageContent;
+        private BunifuCheckbox CheckList;
+        private BunifuCustomLabel bunifuCustomLabel1;
+        private BunifuMetroTextbox SingleSendNumber;
+        private BunifuCustomLabel bunifuCustomLabel2;
+        private BunifuCheckbox SingleSend;
+        private BunifuThinButton2 SendMessage;
+        private BunifuCustomLabel bunifuCustomLabel3;
     }
 }
