@@ -149,9 +149,11 @@
             this.SaveImport.Size = new System.Drawing.Size(93, 39);
             this.SaveImport.TabIndex = 6;
             this.SaveImport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SaveImport.Click += new System.EventHandler(this.SaveImport_Click);
             // 
             // NamesGrid
             // 
+            this.NamesGrid.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.NamesGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.NamesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;

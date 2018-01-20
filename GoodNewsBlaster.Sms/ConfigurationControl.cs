@@ -10,6 +10,10 @@ namespace GoodNewsBlaster.Sms
         {
             InitializeComponent();
             SaveConfig.Click += SaveConfig_Click;
+
+           SenderName.Text=ConfigurationManager.AppSettings["Sender"];
+           ApiUser.Text=ConfigurationManager.AppSettings["ApiKey"];
+           ApiPassword.Text=ConfigurationManager.AppSettings["ApiPass"];
         }
 
         private void SaveConfig_Click(object sender, EventArgs e)

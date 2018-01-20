@@ -63,7 +63,14 @@ namespace GoodNewsBlaster.Sms
                         {
 
                             NamesGrid.DataSource = _dataSet.Tables[table.TableName].DefaultView;
-
+                            foreach (DataGridViewRow row in NamesGrid.Rows)
+                            {
+                                string val = row.Cells[1].Value as string;
+                                if (string.IsNullOrEmpty(val))
+                                {
+                                   NamesGrid.Rows.Remove(row);
+                                }        
+                            }
                         }
                        
                       
@@ -81,13 +88,27 @@ namespace GoodNewsBlaster.Sms
         {
             foreach (DataGridViewRow row in NamesGrid.Rows)
             {
-                var memberInfo = new Member()
+                string val = row.Cells[1].Value as string;
+                if (string.IsNullOrEmpty(val))
                 {
-                    Name = (string) row.Cells[0].Value,
-                    Number = (string) row.Cells[1].Value,
-                };
+                    NamesGrid.Rows.Remove(row);
+                }        
+            }
+            foreach (DataGridViewRow row in NamesGrid.Rows)
+            {
+               
+                if ( !string.IsNullOrEmpty(Convert.ToString(row.Cells[1].Value)))
+                {
+                    var memberInfo = new Member()
+                    {
+                        Name = Convert.ToString(row.Cells[0].Value),
+                        Number = Convert.ToString(row.Cells[1].Value),
+                    };
 
-                tempMembers.Add(memberInfo);
+                    tempMembers.Add(memberInfo);
+                }
+                
+                
                 Thread.Sleep(20);
             }
 
@@ -104,6 +125,10 @@ namespace GoodNewsBlaster.Sms
             Members.AddRange(tempMembers);
           }
 
-      
+        private void SaveImport_Click(object sender, EventArgs e)
+        {
+            //ExtractInformation();
+            NamesGrid.DataSource = Members;
+        }
     }
 }
