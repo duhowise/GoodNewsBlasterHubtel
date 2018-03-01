@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Smsgh.Api.Sdk.Smsgh;
 
 namespace GoodNewsBlaster.Sms
 {
     public partial class SmsControl : UserControl
     {
         static List<Member> _members=new List<Member>();
-        private string _reciepients = String.Empty;
-
         public delegate void DataExtractedEventHandler (object source, EventArgs args);
         public static event DataExtractedEventHandler DataExtractedEvent;
 
@@ -49,61 +49,60 @@ namespace GoodNewsBlaster.Sms
             var source=ConfigurationManager.AppSettings["Sender"];
             var username=ConfigurationManager.AppSettings["ApiKey"];
             var password=ConfigurationManager.AppSettings["ApiPass"];
+             var errorResult = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(source)||!string.IsNullOrWhiteSpace(username)||!string.IsNullOrWhiteSpace(password))
             {
-                 
-                if (!string.IsNullOrWhiteSpace(MessageContent.Text))
+                if (string.IsNullOrWhiteSpace(MessageContent.Text))
                 {
-                
-                    var message=MessageContent.Text;
-                
-               
-
+                    MessageBox.Show(@"Please enter a message to send");
+                }
+                else
+                {
+                    var message = MessageContent.Text;
                     if (SingleSend.Checked)
                     {
                         if (!string.IsNullOrWhiteSpace(SingleSendNumber.Text))
                         {
-                            _reciepients = $"233{ SingleSendNumber.Text.Substring(1)}";
+                            _members.Add(new Member
+                            {
+                                Number = SingleSendNumber.Text
+                            });
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"Single number cant be empty");
                         }
                     }
-                    else
+                   if (CheckList.Checked)
                     {
-                        MessageBox.Show(@"Single number cant be empty");
-                    }
-
-                    if (CheckList.Checked)
-                    {
-                        var reciepientsNumbers = new List<string>();
                         OnDataExtractedEvent(this);
                         _members.AddRange(ImportControl.Members);
-                        _members.ForEach(c => reciepientsNumbers.Add(c.Number));
-                        _reciepients = string.Join(",", reciepientsNumbers);
                     }
-                    var  configureEndpoint =
-                        $"http://121.241.242.114:8080/sendsms?username=ushm-{username}&password={password}&type=5&dlr=1&destination={_reciepients}&source={source}&message={message}";
 
-                    try
+                   foreach (var member in _members)
                     {
-
-                        var client = new HttpClient();
-                        var response= await client.PostAsync(configureEndpoint,null);
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        if (!String.IsNullOrWhiteSpace(responseString))
+                        try
                         {
-                            MessageBox.Show(@"Success");
+                            var host = new ApiHost(new BasicAuth(username, password));
+                            var api = new MessagingApi(host);
+                            var msg = api.SendQuickMessage(source, member.Number,
+                                message, true);
+
+                            if (msg.Status!=0)
+                            {
+                                errorResult += $" \n Sending to {member.Number} failed with status code {msg.Status}";
+                            }
+                            await Task.FromResult(msg);
+                        }
+                        catch (Exception exception)
+                        {
+                            errorResult += $" \n Sending to {member.Number} failed with Exception {exception.Message}";
                         }
                     }
-                    catch (Exception exception)
-                    {
-                        MessageBox.Show(exception.Message,@"Success");
 
-                    }
-            }
-            else
-            {
-                MessageBox.Show(@"Please enter a message to send");
-            }   
+                  MessageBox.Show(errorResult, @"Report",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
             }
             else
             {

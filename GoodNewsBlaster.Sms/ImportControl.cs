@@ -4,7 +4,7 @@ using System.Data;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using Excel;
+using ExcelDataReader;
 
 namespace GoodNewsBlaster.Sms
 {
@@ -47,7 +47,7 @@ namespace GoodNewsBlaster.Sms
 
         private void ImportMembers()
         {
-            using (var openFileDialog = new OpenFileDialog() { Filter = @"Excel 1996-2003 Files | *.xls", ValidateNames = true })
+            using (var openFileDialog = new OpenFileDialog() { Filter =@"Excel 1996-2007 Files |*.xls;*.xlsx;", ValidateNames = true })
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -56,24 +56,26 @@ namespace GoodNewsBlaster.Sms
                     {
                         FileStream fs = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read);
                         ImportedFilename.Text =$@"File: {openFileDialog.SafeFileName}";
-                        var reader = ExcelReaderFactory.CreateBinaryReader(fs);
-                        reader.IsFirstRowAsColumnNames = true;
-                        _dataSet = reader.AsDataSet();
-                        foreach (DataTable table in _dataSet.Tables)
+                        var reader = ExcelReaderFactory.CreateReader(fs);
+                        _dataSet = reader.AsDataSet(new ExcelDataSetConfiguration
                         {
-
-                            NamesGrid.DataSource = _dataSet.Tables[table.TableName].DefaultView;
-                            foreach (DataGridViewRow row in NamesGrid.Rows)
+                            ConfigureDataTable = data => new ExcelDataTableConfiguration
                             {
-                                string val = row.Cells[1].Value as string;
-                                if (string.IsNullOrEmpty(val))
-                                {
-                                   NamesGrid.Rows.Remove(row);
-                                }        
+                                UseHeaderRow = true
                             }
+                        });
+                       foreach (DataTable table in _dataSet.Tables)
+                        {
+                            NamesGrid.DataSource = _dataSet.Tables[table.TableName].DefaultView;                       
                         }
-                       
-                      
+                        foreach (DataGridViewRow row in NamesGrid.Rows)
+                        {
+                            var val = row.Cells[1].Value as string;
+                           if (string.IsNullOrWhiteSpace(val))
+                            {
+                                NamesGrid.Rows.Remove(row);
+                            }        
+                        }
                     }
                     catch (Exception exception)
                     {
