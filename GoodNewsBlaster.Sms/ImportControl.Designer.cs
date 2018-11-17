@@ -1,6 +1,4 @@
-﻿using Bunifu.Framework.UI;
-
-namespace GoodNewsBlaster.Sms
+﻿namespace GoodNewsBlaster.Sms
 {
     partial class ImportControl
     {
@@ -30,58 +28,31 @@ namespace GoodNewsBlaster.Sms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportControl));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.MembersGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ImportedFilename = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.ImportData = new Bunifu.Framework.UI.BunifuThinButton2();
             this.clear = new Bunifu.Framework.UI.BunifuThinButton2();
             this.SaveImport = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.NamesGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NamesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.MembersGrid);
             this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.NamesGrid);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(662, 319);
             this.panel2.TabIndex = 1;
-            // 
-            // MembersGrid
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.MembersGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.MembersGrid.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.MembersGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MembersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MembersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.MembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MembersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MembersGrid.DoubleBuffered = true;
-            this.MembersGrid.EnableHeadersVisualStyles = false;
-            this.MembersGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MembersGrid.HeaderBgColor = System.Drawing.Color.SeaGreen;
-            this.MembersGrid.HeaderForeColor = System.Drawing.Color.SeaGreen;
-            this.MembersGrid.Location = new System.Drawing.Point(0, 0);
-            this.MembersGrid.Name = "MembersGrid";
-            this.MembersGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.MembersGrid.Size = new System.Drawing.Size(662, 273);
-            this.MembersGrid.TabIndex = 2;
             // 
             // panel1
             // 
@@ -180,6 +151,44 @@ namespace GoodNewsBlaster.Sms
             this.SaveImport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SaveImport.Click += new System.EventHandler(this.SaveImport_Click);
             // 
+            // NamesGrid
+            // 
+            this.NamesGrid.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.NamesGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.NamesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.NamesGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.NamesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NamesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.NamesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.NamesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.NamesGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.NamesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NamesGrid.DoubleBuffered = true;
+            this.NamesGrid.EnableHeadersVisualStyles = false;
+            this.NamesGrid.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            this.NamesGrid.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
+            this.NamesGrid.Location = new System.Drawing.Point(0, 0);
+            this.NamesGrid.Name = "NamesGrid";
+            this.NamesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.NamesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.NamesGrid.Size = new System.Drawing.Size(662, 319);
+            this.NamesGrid.TabIndex = 0;
+            // 
             // ImportControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,20 +198,20 @@ namespace GoodNewsBlaster.Sms
             this.Name = "ImportControl";
             this.Size = new System.Drawing.Size(662, 319);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NamesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid NamesGrid;
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuThinButton2 ImportData;
         private Bunifu.Framework.UI.BunifuThinButton2 clear;
         private Bunifu.Framework.UI.BunifuThinButton2 SaveImport;
         private Bunifu.Framework.UI.BunifuCustomLabel ImportedFilename;
-        private BunifuCustomDataGrid MembersGrid;
     }
 }

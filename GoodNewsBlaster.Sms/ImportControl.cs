@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using ExcelDataReader;
@@ -13,7 +14,7 @@ namespace GoodNewsBlaster.Sms
     {
 
         public static List<Member> Members;
-        BindingList<Member> tempMembers;
+        List<Member> tempMembers;
         private DataSet _dataSet;
 
         public ImportControl()
@@ -25,7 +26,7 @@ namespace GoodNewsBlaster.Sms
             clear.Click += Clear_Click;
             _dataSet = new DataSet();
             Members = new List<Member>();
-            tempMembers = new BindingList<Member>();
+            tempMembers = new List<Member>();
             ImportedFilename.Text = $@"File: no file Imported";
 
         }
@@ -37,7 +38,7 @@ namespace GoodNewsBlaster.Sms
 
         private void Clear_Click(object sender, EventArgs e)
         {
-            MembersGrid.DataSource = null;
+            NamesGrid.DataSource = null;
             ImportedFilename.Text = $@"File: no file Imported";
 
         }
@@ -72,7 +73,7 @@ namespace GoodNewsBlaster.Sms
                                 }
                             });
 
-                            MembersGrid.Rows.Clear();
+                            NamesGrid.Rows.Clear();
                             var all = new DataSet();
                             foreach (DataTable dt in _dataSet.Tables)
                             {
@@ -89,15 +90,14 @@ namespace GoodNewsBlaster.Sms
                                 }
                             }
 
-                            MembersGrid.AutoGenerateColumns = true;
-
+                            tempMembers.RemoveAll(x => x.Number == null);
                             var source=new BindingSource(tempMembers,null);
-                            MembersGrid.DataSource = source;
+                            NamesGrid.DataSource = source;
                             reader.Close();
 
                         }
 
-                        ImportedFilename.Text = $@"{ImportedFilename.Text} {MembersGrid.Rows.Count}";
+                        ImportedFilename.Text = $@"{ImportedFilename.Text} {NamesGrid.Rows.Count}";
 
                     }
                     catch (Exception exception)
@@ -111,16 +111,16 @@ namespace GoodNewsBlaster.Sms
 
         public void ExtractInformation()
         {
-            foreach (DataGridViewRow row in MembersGrid.Rows)
+            foreach (DataGridViewRow row in NamesGrid.Rows)
             {
                 string val = row.Cells[1].Value as string;
                 if (string.IsNullOrEmpty(val))
                 {
-                    MembersGrid.Rows.Remove(row);
+                    NamesGrid.Rows.Remove(row);
                 }
             }
 
-            foreach (DataGridViewRow row in MembersGrid.Rows)
+            foreach (DataGridViewRow row in NamesGrid.Rows)
             {
 
                 if (!string.IsNullOrEmpty(Convert.ToString(row.Cells[1].Value)))
@@ -154,7 +154,7 @@ namespace GoodNewsBlaster.Sms
         private void SaveImport_Click(object sender, EventArgs e)
         {
             //ExtractInformation();
-            MembersGrid.DataSource = Members;
+            NamesGrid.DataSource = Members;
         }
     }
 

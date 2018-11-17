@@ -120,6 +120,7 @@
             // 
             // Config
             // 
+            this.Config.Active = false;
             this.Config.Activecolor = System.Drawing.Color.WhiteSmoke;
             this.Config.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Config.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -147,7 +148,7 @@
             this.Config.OnHovercolor = System.Drawing.Color.WhiteSmoke;
             this.Config.OnHoverTextColor = System.Drawing.Color.White;
             this.Config.selected = false;
-            this.Config.Size = new System.Drawing.Size(112, 24);
+            this.Config.Size = new System.Drawing.Size(115, 24);
             this.Config.TabIndex = 3;
             this.Config.Text = "Configurations";
             this.Config.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,6 +158,7 @@
             // 
             // Send
             // 
+            this.Send.Active = false;
             this.Send.Activecolor = System.Drawing.Color.WhiteSmoke;
             this.Send.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -203,6 +205,7 @@
             // 
             // Import
             // 
+            this.Import.Active = false;
             this.Import.Activecolor = System.Drawing.Color.WhiteSmoke;
             this.Import.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Import.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
