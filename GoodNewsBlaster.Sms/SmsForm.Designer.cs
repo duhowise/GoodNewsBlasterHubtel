@@ -42,6 +42,7 @@
             this.Import = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ContentArea = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -254,6 +255,11 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Text = "notifyIcon1";
+            this.notifyIcon.Visible = true;
+            // 
             // SmsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,6 +297,7 @@
         private System.Windows.Forms.Panel ContentArea;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuFlatButton Config;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 

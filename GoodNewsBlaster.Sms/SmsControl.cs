@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Net.Http;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Smsgh.Api.Sdk.Smsgh;
@@ -10,12 +10,14 @@ namespace GoodNewsBlaster.Sms
 {
     public partial class SmsControl : UserControl
     {
+        private readonly NotifyIcon _notifyIcon;
         static List<Member> _members=new List<Member>();
         public delegate void DataExtractedEventHandler (object source, EventArgs args);
         public static event DataExtractedEventHandler DataExtractedEvent;
 
-        public SmsControl()
+        public SmsControl(NotifyIcon notifyIcon)
         {
+            _notifyIcon = notifyIcon;
             InitializeComponent();
             SingleSend.Checked = false;
             CheckList.Checked = false;
@@ -23,6 +25,7 @@ namespace GoodNewsBlaster.Sms
             SendMessage.Click += SendMessage_Click;
             SingleSend.Click += SingleSend_Click;
             CheckList.Click += CheckList_Click;
+                    _notifyIcon.Icon = SystemIcons.Application;
         }
 
         private void CheckList_Click(object sender, EventArgs e)
@@ -55,7 +58,7 @@ namespace GoodNewsBlaster.Sms
             {
                 if (string.IsNullOrWhiteSpace(MessageContent.Text))
                 {
-                    MessageBox.Show(@"Please enter a message to send");
+                    _notifyIcon.ShowBalloonTip(3000, "SMS Prompt", @"Please enter a message to send", ToolTipIcon.Warning);
                 }
                 else
                 {
@@ -71,7 +74,7 @@ namespace GoodNewsBlaster.Sms
                         }
                         else
                         {
-                            MessageBox.Show(@"Single number cant be empty");
+                    _notifyIcon.ShowBalloonTip(3000, "SMS Prompt", @"Single number cant be empty", ToolTipIcon.Warning);
                         }
                     }
                    if (CheckList.Checked)
@@ -101,7 +104,7 @@ namespace GoodNewsBlaster.Sms
                         }
                     }
 
-                  MessageBox.Show(errorResult, @"Report",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    _notifyIcon.ShowBalloonTip(3000, "SMS Report", $"{errorResult} ", ToolTipIcon.Warning);
                 }
             }
             else

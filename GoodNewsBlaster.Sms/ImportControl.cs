@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using ExcelDataReader;
@@ -12,13 +11,15 @@ namespace GoodNewsBlaster.Sms
 {
     public partial class ImportControl : UserControl
     {
+        private readonly NotifyIcon _notifyIcon;
 
         public static List<Member> Members;
-        List<Member> tempMembers;
+        List<Member> _tempMembers;
         private DataSet _dataSet;
 
-        public ImportControl()
+        public ImportControl(NotifyIcon notifyIcon)
         {
+            _notifyIcon = notifyIcon;
             InitializeComponent();
             SmsControl.DataExtractedEvent += SmsControl_DataExtractedEvent;
             ImportData.Click += ImportData_Click;
@@ -26,7 +27,7 @@ namespace GoodNewsBlaster.Sms
             clear.Click += Clear_Click;
             _dataSet = new DataSet();
             Members = new List<Member>();
-            tempMembers = new List<Member>();
+            _tempMembers = new List<Member>();
             ImportedFilename.Text = $@"File: no file Imported";
 
         }
@@ -74,6 +75,7 @@ namespace GoodNewsBlaster.Sms
                             });
 
                             NamesGrid.Rows.Clear();
+                            _tempMembers.Clear();
                             var all = new DataSet();
                             foreach (DataTable dt in _dataSet.Tables)
                             {
@@ -86,15 +88,16 @@ namespace GoodNewsBlaster.Sms
                                     };
 
 
-                                    tempMembers.Add(mem);
+                                    _tempMembers.Add(mem);
                                 }
                             }
 
-                            tempMembers.RemoveAll(x => x.Number == null);
-                            var source=new BindingSource(tempMembers,null);
+                            _tempMembers.RemoveAll(x => x.Number == null);
+                            var source=new BindingSource(_tempMembers,null);
                             NamesGrid.DataSource = source;
                             reader.Close();
-
+                            _notifyIcon.Icon = SystemIcons.Application;
+                            _notifyIcon.ShowBalloonTip(3000,"Import Members",$"{_tempMembers.Count} Member(s) imported successfully",ToolTipIcon.Info);
                         }
 
                         ImportedFilename.Text = $@"{ImportedFilename.Text} {NamesGrid.Rows.Count}";
@@ -131,14 +134,14 @@ namespace GoodNewsBlaster.Sms
                         Number = Convert.ToString(row.Cells[1].Value),
                     };
 
-                    tempMembers.Add(memberInfo);
+                    _tempMembers.Add(memberInfo);
                 }
 
 
                 Thread.Sleep(20);
             }
 
-            foreach (var member in tempMembers)
+            foreach (var member in _tempMembers)
             {
                 if (member.Number != null)
                 {
@@ -148,7 +151,7 @@ namespace GoodNewsBlaster.Sms
                 }
             }
 
-            Members.AddRange(tempMembers);
+            Members.AddRange(_tempMembers);
         }
 
         private void SaveImport_Click(object sender, EventArgs e)
