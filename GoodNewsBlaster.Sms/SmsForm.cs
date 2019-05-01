@@ -16,9 +16,23 @@ namespace GoodNewsBlaster.Sms
           
             InitializeComponent();
             Load += SmsForm_Load;
+            notifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClicked;
+            notifyIcon.Click += NotifyIcon_Click;
+
         }
 
-       
+        private void NotifyIcon_Click(object sender, EventArgs e)
+        {
+            this._smsControl = new SmsControl(notifyIcon);
+
+        }
+
+        private void NotifyIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            this._smsControl = new SmsControl(notifyIcon);
+
+        }
+
         private void SmsForm_Load(object sender, EventArgs e)
         {
             this._configurationControl =new ConfigurationControl();
@@ -50,7 +64,8 @@ namespace GoodNewsBlaster.Sms
         private void AddControl(Control control)
         {
             ContentArea.Controls.Clear();
-            control.Width = ContentArea.Width -10;
+            control.Width = ContentArea.Width -5;
+            control.AutoSize = true;
             ContentArea.Controls.Add(control);
         }
 

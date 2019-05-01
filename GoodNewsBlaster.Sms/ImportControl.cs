@@ -13,29 +13,21 @@ namespace GoodNewsBlaster.Sms
     {
         private readonly NotifyIcon _notifyIcon;
 
-        public static List<Member> Members;
-        List<Member> _tempMembers;
+       public static List<Member> Members;
         private DataSet _dataSet;
 
         public ImportControl(NotifyIcon notifyIcon)
         {
             _notifyIcon = notifyIcon;
             InitializeComponent();
-            SmsControl.DataExtractedEvent += SmsControl_DataExtractedEvent;
             ImportData.Click += ImportData_Click;
-
             clear.Click += Clear_Click;
             _dataSet = new DataSet();
             Members = new List<Member>();
-            _tempMembers = new List<Member>();
             ImportedFilename.Text = $@"File: no file Imported";
 
         }
-
-        private void SmsControl_DataExtractedEvent(object source, EventArgs args)
-        {
-            ExtractInformation();
-        }
+        
 
         private void Clear_Click(object sender, EventArgs e)
         {
@@ -51,6 +43,7 @@ namespace GoodNewsBlaster.Sms
 
         private void ImportMembers()
         {
+
             using (var openFileDialog = new OpenFileDialog()
                 {Filter = @"Excel 1996-2007 Files |*.xls;*.xlsx;", ValidateNames = true})
             {
@@ -75,8 +68,8 @@ namespace GoodNewsBlaster.Sms
                             });
 
                             NamesGrid.Rows.Clear();
-                            _tempMembers.Clear();
-                            var all = new DataSet();
+                            Members.Clear();
+                            Members=new List<Member>();
                             foreach (DataTable dt in _dataSet.Tables)
                             {
                                 foreach (DataRow dataRow in dt.Rows)
@@ -88,16 +81,16 @@ namespace GoodNewsBlaster.Sms
                                     };
 
 
-                                    _tempMembers.Add(mem);
+                                    Members.Add(mem);
                                 }
                             }
 
-                            _tempMembers.RemoveAll(x => x.Number == null);
-                            var source=new BindingSource(_tempMembers,null);
+                            Members.RemoveAll(x => x.Number == null);
+                            var source=new BindingSource(Members,null);
                             NamesGrid.DataSource = source;
                             reader.Close();
                             _notifyIcon.Icon = SystemIcons.Application;
-                            _notifyIcon.ShowBalloonTip(3000,"Import Members",$"{_tempMembers.Count} Member(s) imported successfully",ToolTipIcon.Info);
+                            _notifyIcon.ShowBalloonTip(3000,"Import Members",$"{Members.Count} Member(s) imported successfully",ToolTipIcon.Info);
                         }
 
                         ImportedFilename.Text = $@"{ImportedFilename.Text} {NamesGrid.Rows.Count}";
@@ -112,48 +105,6 @@ namespace GoodNewsBlaster.Sms
             }
         }
 
-        public void ExtractInformation()
-        {
-            foreach (DataGridViewRow row in NamesGrid.Rows)
-            {
-                string val = row.Cells[1].Value as string;
-                if (string.IsNullOrEmpty(val))
-                {
-                    NamesGrid.Rows.Remove(row);
-                }
-            }
-
-            foreach (DataGridViewRow row in NamesGrid.Rows)
-            {
-
-                if (!string.IsNullOrEmpty(Convert.ToString(row.Cells[1].Value)))
-                {
-                    var memberInfo = new Member()
-                    {
-                        Name = Convert.ToString(row.Cells[0].Value),
-                        Number = Convert.ToString(row.Cells[1].Value),
-                    };
-
-                    _tempMembers.Add(memberInfo);
-                }
-
-
-                Thread.Sleep(20);
-            }
-
-            foreach (var member in _tempMembers)
-            {
-                if (member.Number != null)
-                {
-                    var substring = member.Number.Substring(1);
-
-                    member.Number = $"233{substring}";
-                }
-            }
-
-            Members.AddRange(_tempMembers);
-        }
-
         private void SaveImport_Click(object sender, EventArgs e)
         {
             //ExtractInformation();
@@ -161,8 +112,5 @@ namespace GoodNewsBlaster.Sms
         }
     }
 
-    [AttributeUsage(AttributeTargets.Property)]
-    public class DataColumnAttribute : Attribute
-    {
-    }
+    
 }

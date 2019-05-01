@@ -12,8 +12,6 @@ namespace GoodNewsBlaster.Sms
     {
         private readonly NotifyIcon _notifyIcon;
         static List<Member> _members=new List<Member>();
-        public delegate void DataExtractedEventHandler (object source, EventArgs args);
-        public static event DataExtractedEventHandler DataExtractedEvent;
 
         public SmsControl(NotifyIcon notifyIcon)
         {
@@ -79,7 +77,6 @@ namespace GoodNewsBlaster.Sms
                     }
                    if (CheckList.Checked)
                     {
-                        OnDataExtractedEvent(this);
                         _members.AddRange(ImportControl.Members);
                     }
 
@@ -115,9 +112,6 @@ namespace GoodNewsBlaster.Sms
 
         }
 
-        private static void OnDataExtractedEvent(object source)
-        {
-            DataExtractedEvent?.Invoke(source, EventArgs.Empty);
-        }
+        
     }
 }

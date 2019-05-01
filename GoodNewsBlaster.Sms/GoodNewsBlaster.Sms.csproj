@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\Downloads\Compressed\Bunifu_UI_WinForms_1.8.0.1_Downloadly.ir\Bunifu UI WinForms 1.8.0.1\Bunifu UI WinForms 1.8.0.1\Bunifu_UI_v1.5.3.dll</HintPath>
+    <Reference Include="Bunifu_UI_v1.5.4">
+      <HintPath>.\Bunifu_UI_v1.5.4.dll</HintPath>
     </Reference>
     <Reference Include="ExcelDataReader, Version=3.4.1.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.3.4.1\lib\net45\ExcelDataReader.dll</HintPath>
@@ -74,7 +74,6 @@
     <Compile Include="ConfigurationControl.Designer.cs">
       <DependentUpon>ConfigurationControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataObjectExtensions.cs" />
     <Compile Include="SmsForm.cs">
       <SubType>Form</SubType>
     </Compile>
